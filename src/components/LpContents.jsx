@@ -14,10 +14,34 @@ import LogoImag from '../images/top-logo.png';
 import DemoImag from '../images/demo-img.png';
 // import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import FavoriteSharpIcon from '@material-ui/icons/FavoriteSharp';
+import { motion } from "framer-motion";
+import { Frame } from "framer"
 
 function LpContents() {
     return (
         <>
+            {/* <motion.div
+                drag="x"
+                dragConstraints={{ left: -100, right: 100 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+            /> */}
+            {/* <Frame
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2 }}
+            /> */}
+            {/* <motion.a
+                whileHover={{ scale: 1.2 }}
+                onHoverStart={e => { }}
+                onHoverEnd={e => { }}
+            /> */}
+            {/* <motion.button
+                whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 1 },
+                }}
+                whileTap={{ scale: 0.9 }}
+            /> */}
             <div className="mainTop-view">
                 <header>
                     <div className="top-logo-img">
@@ -32,18 +56,30 @@ function LpContents() {
                 <div className="Contener-box">
                     <div className="Wrap-content-styles">
                         <div className="Heart-svg">
-                            <p><FavoriteSharpIcon style={{ fontSize: 40 }} /></p>
+                            <p ><FavoriteSharpIcon style={{ fontSize: 40 }} /></p>
                         </div>
                         <h1>愛<br />の<br />標<br />識</h1>
                         <p>~あの頃の私にさようなら~</p>
                     </div>
                 </div>
+
                 <div className="fixd-btn">
+                    {/* <motion.div
+                        className="container"
+                        initial={{ scale: 0 }}
+                        animate={{ rotate: 360, scale: 1 }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 360,
+                            damping: 20,
+                            duration: 2
+                        }}
+                    /> */}
                     <a href="#">見積モリヲハジメル</a>
                 </div>
             </div>
 
-            <section className="Second-content-style">
+            <section className="Second-content-style" id="Second-content-style">
                 <div className="Wrap-content-styles">
                     <div className="flex-box-between">
                         <div className="left-box">
@@ -72,7 +108,7 @@ function LpContents() {
                 </div>
             </section>
 
-            <section className="Thaad-content-style">
+            <section className="Thaad-content-style" id="Thaad-content-style">
                 <div className="Wrap-content-styles">
                     <div className="flex-box-between">
                         <div className="left-box">
@@ -145,10 +181,10 @@ function LpContents() {
                                 <p><FavoriteSharpIcon style={{ fontSize: 20 }} /></p>
                             </li>
                             <li>
-                                <a href="#">愛の標識の思考について</a>
+                                <a href="#Second-content-style">愛の標識の思考について</a>
                             </li>
                             <li>
-                                <a href="#">愛の標識でできること</a>
+                                <a href="#Thaad-content-style">愛の標識でできること</a>
                             </li>
                         </ul>
                     </div>

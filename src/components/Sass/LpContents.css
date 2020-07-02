@@ -101,17 +101,24 @@
   position: fixed;
   bottom: 16px;
   text-align: center;
-  padding: 16px 0;
+  padding: 32px 0;
   z-index: 5 !important;
 }
 
 .mainTop-view .fixd-btn a {
+  width: 50%;
   color: #fff;
   background: #f26152;
-  padding: 16px 48px;
+  padding: 16px 160px;
   text-decoration: none;
   border-radius: 30px;
   letter-spacing: 1.2px;
+}
+
+@media screen and (max-width: 640px) {
+  .mainTop-view .fixd-btn a {
+    padding: 16px 100px;
+  }
 }
 
 .Second-content-style {
@@ -299,6 +306,11 @@
   font-family: 'Noto Sans JP", sans-serif';
   color: #fff;
   text-decoration: none;
+  font-size: 12px;
+}
+
+.Fourth-content-style .Wrap-content-styles .Contener-box ul :nth-child(2) p {
+  color: #f26152;
 }
 
 footer {
