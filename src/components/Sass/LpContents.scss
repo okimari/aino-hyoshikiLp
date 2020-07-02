@@ -1,0 +1,358 @@
+// classの継承
+// %inner-contents {
+//     width: 95%;
+//     margin: 0 auto;
+//     max-width: 960px;
+//     padding: 60px 0;
+// }
+// 戻すときは
+// @extend %inner-contents;
+// で、表示する
+//--------------------------------------------------------------------------//
+// fotnの読み込みのまとめ場所
+@font-face {
+    font-family: "851Gkktt_005";
+    src: url("../../font/851Gkktt_005.ttf"), /* IE9 Compat Modes */
+    url("../../font/851Gkktt_005.ttf") format("embedded-opentype"), /*IE6-IE8*/
+    url("../../font/851Gkktt_005.woff") format("woff"), /*Pretty Modern Browsers*/
+    url("../../font/851Gkktt_005.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../../font/851Gkktt_005.ttf") format("svg");
+    /* Legacy iOS */
+}
+
+// @font-face {
+//     font-family: "Noto Sans JP", sans-serif;
+//     src: url("../../font/NotoSansJP-Regular.otf"), /* IE9 Compat Modes */
+//     url("../../font/NotoSansJP-Regular.otf") format("embedded-opentype"), /*IE6-IE8*/
+//     url("../../font/NotoSansJP-Regular.otf") format("woff"), /*Pretty Modern Browsers*/
+//     url("../../font/NotoSansJP-Regular.otf") format("truetype"), /* Safari, Android, iOS */
+//     url("../../font/NotoSansJP-Regular.otf") format("svg");
+//     /* Legacy iOS */
+// }
+// * {
+//     // font-family: "851Gkktt_005";
+//     // font-family: "Noto Sans JP", sans-serif;
+//     font-weight: 400;
+// }
+// メディアクエリ
+$tab: 1190px; //タブレット
+$sp: 640px; // スマホ
+@mixin max-screen($break-point) {
+    @media screen and (max-width: $break-point) {
+        @content;
+    }
+}
+
+@mixin min-screen($break-point) {
+    @media screen and (min-width: $break-point) {
+        @content;
+    }
+}
+
+@mixin screen($break-point-min,
+$break-point-max) {
+    @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+        @content;
+    }
+}
+
+//--------------------------------------------------------------------------//
+// 変数のまとめ場所
+$Blue: #053a8d;
+$White: #fff;
+$Red: #f26152;
+$pink: #de969f;
+$G851: "851Gkktt_005";
+$notoSan: 'Noto Sans JP", sans-serif';
+//--------------------------------------------------------------------------//
+// 継承まとめ場所
+%Wrap-content-styles {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1020px;
+    padding: 60px 0;
+}
+
+%flex-box-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+%contents-number-title {
+    font-size: 50px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    background-color: $White;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+}
+
+%G851-font-family {
+    font-family: $G851;
+    font-weight: 400;
+}
+
+%notoSan-font-family {
+    font-family: $notoSan;
+    font-weight: 400;
+}
+
+//--------------------------------------------------------------------------//
+.mainTop-view {
+    width: 100%;
+    background: $Blue;
+    background-image: url(../../images/bg-img.png);
+    header {
+        width: 95%;
+        margin: 0 auto;
+        padding: 16px 0;
+        @extend %flex-box-between;
+        .top-logo-img {
+            width: 150px;
+            img {
+                width: 100%;
+            }
+        }
+        ul {
+            @extend %flex-box-between;
+            li {
+                margin-left: 4px;
+            }
+        }
+    }
+    .Contener-box {
+        width: 100%;
+        text-align: center;
+        @extend %Wrap-content-styles;
+        .Heart-svg {
+            width: 100%;
+            p {
+                width: 50%;
+                margin: 0 auto;
+                color: $Red;
+            }
+        }
+        h1 {
+            color: $White;
+            line-height: 0.9;
+            font-size: 100px;
+            margin-bottom: 24px;
+            @extend %G851-font-family;
+        }
+        p {
+            color: $White;
+            font-size: 18px;
+            letter-spacing: 1.2px;
+            @extend %G851-font-family;
+        }
+    }
+    .fixd-btn {
+        width: 100%;
+        position: fixed;
+        bottom: 16px;
+        text-align: center;
+        padding: 16px 0;
+        z-index: 5 !important;
+        a {
+            color: $White;
+            background: $Red;
+            padding: 16px 48px;
+            text-decoration: none;
+            border-radius: 30px;
+            letter-spacing: 1.2px;
+            @extend %G851-font-family;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------//
+// *Second-content-style* //
+//--------------------------------------------------------------------------//
+.Second-content-style {
+    width: 100%;
+    background: $pink;
+    background-image: url(../../images/bg-img.png);
+    .Wrap-content-styles {
+        @extend %Wrap-content-styles;
+        .flex-box-between {
+            @extend %flex-box-between;
+            @include max-screen($sp) {
+                flex-wrap: wrap-reverse;
+                flex-direction: row-reverse;
+            }
+            .left-box {
+                width: 50%;
+                @include max-screen($sp) {
+                    width: 100%;
+                }
+                .contents-number-title {
+                    color: $pink;
+                    @extend %contents-number-title;
+                    @extend %G851-font-family;
+                }
+                dl {
+                    dt {
+                        h2 {
+                            font-size: 32px;
+                            letter-spacing: 1.2px;
+                            color: $White;
+                            line-height: 2;
+                            @extend %G851-font-family;
+                        }
+                    }
+                    dd {
+                        @extend %notoSan-font-family;
+                        font-size: 14px;
+                        line-height: 1.8;
+                        width: 90%;
+                        margin: 0 auto 0 0;
+                        text-align: justify;
+                        font-weight: 500;
+                        color: $White;
+                        @include max-screen($sp) {
+                            width: 100%;
+                        }
+                        span {
+                            color: $Blue;
+                        }
+                    }
+                }
+            }
+            .right-box {
+                width: 50%;
+                @include max-screen($sp) {
+                    width: 100%;
+                    margin-bottom: 32px;
+                }
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------------------//
+// *Thaad-content-style* //
+//--------------------------------------------------------------------------//
+.Thaad-content-style {
+    width: 100%;
+    background: $Blue;
+    background-image: url(../../images/bg-img.png);
+    .Wrap-content-styles {
+        @extend %Wrap-content-styles;
+        .flex-box-between {
+            @extend %flex-box-between;
+            @include max-screen($sp) {
+                display: block;
+            }
+            .left-box {
+                width: 50%;
+                @include max-screen($sp) {
+                    width: 100%;
+                    margin-bottom: 32px;
+                }
+                img {
+                    width: 100%;
+                }
+            }
+            .right-box {
+                width: 45%;
+                @include max-screen($sp) {
+                    width: 100%;
+                }
+                .contents-number-title {
+                    color: $Blue;
+                    @extend %contents-number-title;
+                    @extend %G851-font-family;
+                }
+                dl {
+                    dt {
+                        h2 {
+                            font-size: 32px;
+                            letter-spacing: 1.2px;
+                            color: $White;
+                            line-height: 2;
+                            @extend %G851-font-family;
+                        }
+                    }
+                    dd {
+                        @extend %notoSan-font-family;
+                        font-size: 14px;
+                        line-height: 1.8;
+                        width: 100%;
+                        // margin: 0 0 0 auto;
+                        text-align: justify;
+                        font-weight: 500;
+                        color: $White;
+                        @include max-screen($sp) {
+                            width: 100%;
+                        }
+                        span {
+                            color: $Blue;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.Fourth-content-style {
+    width: 100%;
+    background: $Blue;
+    background-image: url(../../images/bg-img.png);
+    .Wrap-content-styles {
+        @extend %Wrap-content-styles;
+        .Contener-box {
+            width: 100%;
+            text-align: center;
+            .Heart-svg {
+                width: 100%;
+                p {
+                    width: 50%;
+                    margin: 0 auto;
+                    color: $Red;
+                }
+            }
+            h1 {
+                color: $White;
+                line-height: 0.9;
+                font-size: 100px;
+                margin-bottom: 24px;
+                @extend %G851-font-family;
+            }
+            ul {
+                text-align: center;
+                li {
+                    margin-bottom: 24px;
+                    p {
+                        color: $White;
+                        font-family: $notoSan;
+                    }
+                    a {
+                        font-family: $notoSan;
+                        color: $White;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    background: $pink;
+    padding: 8px 0;
+    text-align: center;
+    small {
+        font-size: 10px;
+        letter-spacing: 1.2px;
+        text-align: center;
+        color: $White;
+    }
+}
